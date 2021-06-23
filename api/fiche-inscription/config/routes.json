@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fiche-inscriptions",
+      "handler": "fiche-inscription.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fiche-inscriptions/count",
+      "handler": "fiche-inscription.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fiche-inscriptions/:id",
+      "handler": "fiche-inscription.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fiche-inscriptions",
+      "handler": "fiche-inscription.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fiche-inscriptions/:id",
+      "handler": "fiche-inscription.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fiche-inscriptions/:id",
+      "handler": "fiche-inscription.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fiche-inscriptions/creer",
+      "handler": "fiche-inscription.toPdf",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

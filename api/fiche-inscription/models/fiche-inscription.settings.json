@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fiche_inscriptions",
+  "info": {
+    "name": "fiche_inscription",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "birth_date": {
+      "type": "date",
+      "required": true
+    },
+    "place_of_birth": {
+      "type": "string",
+      "required": true
+    },
+    "height_cm": {
+      "type": "integer",
+      "unique": false,
+      "required": true
+    },
+    "laterality": {
+      "type": "string",
+      "required": true
+    },
+    "adress": {
+      "type": "string",
+      "required": true
+    },
+    "code_postal": {
+      "type": "integer",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "tel_dom": {
+      "type": "integer"
+    },
+    "tel_mob_res_2": {
+      "type": "integer"
+    },
+    "tel_mob_licencie": {
+      "type": "integer",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "reglement_interieur": {
+      "type": "boolean",
+      "required": true
+    },
+    "chartre_club": {
+      "type": "boolean",
+      "required": true
+    },
+    "accepte_photo": {
+      "type": "boolean",
+      "required": true
+    },
+    "sexe": {
+      "type": "string",
+      "required": true
+    },
+    "tel_mob_res_1": {
+      "type": "integer",
+      "required": true
+    },
+    "pdf": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}
