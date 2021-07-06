@@ -21,6 +21,7 @@ module.exports = {
       resp2Phone,
       size,
       zipCode,
+      pictureAuthorization
     } = ctx.request.body
     const doc = new PDFDocument({ size: 'A4' })
     const now = new dayjs()
@@ -71,7 +72,6 @@ module.exports = {
        .moveDown()
        .text(`Code postal : ${zipCode}    Ville : ${city}`)
 
-
     if (licenseePhone || homePhone) {
       let firstPhoneLine = ''
       if (licenseePhone) {
@@ -110,6 +110,39 @@ module.exports = {
 
     doc.moveDown()
        .text(`Courriel : ${email}`)
+
+    const checkbox = (height, text, checked = true) => {
+      doc.lineWidth(1)
+      doc.lineJoin('miter')
+         .rect(60, height, 10, 10)
+         .stroke()
+
+      if (checked) {
+        doc.fillColor('black')
+           .path(`M62,${height + 2} l0.5,-0.5 l2.5,2.5 l2.5,-2.5 l1,1 l-2.5,2.5 l2.5,2.5 l-1,1 l-2.5,-2.5 l-2.5,2.5 l-1,-1 l2.5,-2.5 l-2.5,-2.5z`)
+           .fill('non-zero')
+      }
+
+      doc.font('public/assets/fonts/RobotoSlab-Regular.ttf')
+         .fillColor('black')
+         .fontSize(12)
+         .text(text, 80, height - 3, {
+           width: 452.28,
+         })
+    }
+    checkbox(
+      480,
+      `Je déclare avoir pris connaissance du règlement intérieur du club et en accepter les conditions.`,
+    )
+    checkbox(
+      520,
+      `Je déclare avoir pris connaissance de la Charte du club et en accepter les conditions.`,
+    )
+    checkbox(
+      560,
+      `J’accepte que l’EVDRLHB publie des photos prises dans le cadre des rencontres sportives dans le cadre d’activités liées à la vie du club sur lesquelles j’apparais.`,
+      pictureAuthorization || false
+    )
 
     doc.end()
     /*const data = ctx.response.body
