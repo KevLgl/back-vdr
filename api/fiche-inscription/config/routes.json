@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/fiche-inscriptions/creer",
+      "path": "/fiche-inscriptions/create",
       "handler": "fiche-inscription.toPdf",
       "config": {
         "policies": []
