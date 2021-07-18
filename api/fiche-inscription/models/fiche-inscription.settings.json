@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "lastName": {
       "type": "string",
       "required": true
     },
-    "firstname": {
+    "firstName": {
       "type": "string",
       "required": true
     },
-    "birth_date": {
+    "birthdate": {
       "type": "date",
       "required": true
     },
@@ -37,7 +37,7 @@
       "type": "string",
       "required": true
     },
-    "adress": {
+    "address": {
       "type": "string",
       "required": true
     },
@@ -49,16 +49,6 @@
       "type": "string",
       "required": true
     },
-    "tel_dom": {
-      "type": "integer"
-    },
-    "tel_mob_res_2": {
-      "type": "integer"
-    },
-    "tel_mob_licencie": {
-      "type": "integer",
-      "required": true
-    },
     "email": {
       "type": "email",
       "required": true,
@@ -68,7 +58,7 @@
       "type": "boolean",
       "required": true
     },
-    "chartre_club": {
+    "charte_club": {
       "type": "boolean",
       "required": true
     },
@@ -76,12 +66,8 @@
       "type": "boolean",
       "required": true
     },
-    "sexe": {
+    "gender": {
       "type": "string",
-      "required": true
-    },
-    "tel_mob_res_1": {
-      "type": "integer",
       "required": true
     },
     "pdf": {
@@ -93,6 +79,22 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "tel_dom": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "tel_mob_res_2": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "tel_mob_res_1": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "tel_mob_licencie": {
+      "type": "string",
+      "maxLength": 15
     }
   }
 }

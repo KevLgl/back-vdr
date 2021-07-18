@@ -2,6 +2,7 @@
 const PDFDocument = require('pdfkit')
 const fs = require('fs')
 const dayjs = require('dayjs')
+const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   // TODO:
@@ -150,9 +151,29 @@ module.exports = {
     )
 
     doc.end()
-    /*const data = ctx.response.body
-    const result = await createStrapi.entityService.create({ data }, { model: "Fiche_inscriptions" }) // or request
-    return result*/
+
+    const entity = await strapi.services['fiche-inscription'].create({
+        lastName,
+        firstName,
+        birthdate,
+        place_of_birth: birthPlace,
+        height_cm: size,
+        laterality,
+        address,
+        code_postal: zipCode,
+        country: city,
+        tel_dom: `${homePhone}`,
+        tel_mob_res_2: `${resp2Phone}`,
+        tel_mob_res_1: `${resp1Phone}`,
+        tel_mob_licencie: `${licenseePhone}`,
+        email,
+        reglement_interieur: reglement,
+        charte_club: charte,
+        accepte_photo: pictureAuthorization,
+        gender,
+        pdf: doc,
+      })
+    return sanitizeEntity(entity, { model: strapi.models['fiche-inscription'] })
   }
   ,
   //- Génération de PDF
