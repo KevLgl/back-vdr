@@ -7,21 +7,24 @@ module.exports = {
   // TODO:
   toPdf: async (ctx) => {
     const {
-      address,
-      birthPlace,
-      city,
-      email,
       firstName,
-      gender,
-      homePhone,
       lastName,
-      laterality,
-      licenseePhone,
-      resp1Phone,
-      resp2Phone,
-      size,
-      zipCode,
-      pictureAuthorization
+      birthdate,
+      place_of_birth: birthPlace,
+      gender,
+      height: size,
+      lateralite: laterality,
+      address,
+      cp: zipCode,
+      country: city,
+      phone_number1: licenseePhone,
+      phone_number2: homePhone,
+      phone_number3: resp1Phone,
+      phone_number4: resp2Phone,
+      email,
+      reglement,
+      charte,
+      photo: pictureAuthorization,
     } = ctx.request.body
     const doc = new PDFDocument({ size: 'A4' })
     const now = new dayjs()
@@ -51,7 +54,7 @@ module.exports = {
        })
 
     // Data
-    const birthDay = new dayjs('02-08-1986')
+    const birthDay = new dayjs(birthdate)
     const isMale = gender === 'M'
     doc.font('public/assets/fonts/RobotoSlab-Regular.ttf')
        .fillColor('black')
@@ -133,15 +136,17 @@ module.exports = {
     checkbox(
       480,
       `Je déclare avoir pris connaissance du règlement intérieur du club et en accepter les conditions.`,
+      reglement,
     )
     checkbox(
       520,
       `Je déclare avoir pris connaissance de la Charte du club et en accepter les conditions.`,
+      charte,
     )
     checkbox(
       560,
       `J’accepte que l’EVDRLHB publie des photos prises dans le cadre des rencontres sportives dans le cadre d’activités liées à la vie du club sur lesquelles j’apparais.`,
-      pictureAuthorization || false
+      pictureAuthorization || false,
     )
 
     doc.end()
